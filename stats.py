@@ -1,6 +1,7 @@
 def get_num_words(text):
     words = text.split()
     return len(words)
+
 def get_character_count(text):
     # Convert to lowercase to avoid duplicates
     text_lower = text.lower()
@@ -16,3 +17,16 @@ def get_character_count(text):
             char_count[char] = 1
     
     return char_count
+
+def print_report(char_count):
+    # Convert dictionary to list of dictionaries
+    char_list = []
+    for char, count in char_count.items():
+        # Only include alphabetical characters
+        if char.isalpha():
+            char_list.append({"char": char, "num": count})
+    
+    # Sort by count (descending) using the "num" key
+    char_list.sort(key=lambda x: x["num"], reverse=True)
+    
+    return char_list
